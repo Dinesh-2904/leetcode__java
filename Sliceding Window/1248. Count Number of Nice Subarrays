@@ -1,0 +1,25 @@
+class Solution {
+    public int numberOfSubarrays(int[] nums, int k) {
+        return num(nums,k) - num(nums,k - 1 );
+       
+    }
+    public int num(int[] nums,int k){
+        int left = 0;
+        int count = 0;
+
+        for(int rigth = 0;rigth < nums.length;rigth++){
+
+            if(nums[rigth] % 2 != 0){
+                k--;
+            }
+            while(k < 0){
+                if(nums[left] % 2 != 0){
+                    k++;
+                }
+                left++;
+            }
+            count += rigth - left + 1;
+        }
+        return count;
+    }
+}
